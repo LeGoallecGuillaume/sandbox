@@ -14,8 +14,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 100%;
 }
 
-.area-height{
+.area{
   height: 100px;
+  width: 100%;
 }
 
 .chrome-ext-size {
@@ -27,3 +28,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   overflow: auto;
   height: 40px;
 }
+
+.flex-container-end{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

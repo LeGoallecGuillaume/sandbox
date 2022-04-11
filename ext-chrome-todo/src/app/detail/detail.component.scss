@@ -3,10 +3,15 @@
   margin: 10px;
 }
 
-.flex-container{
+.flex-container-end{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
   justify-content: flex-end;
+}
+
+.content{
+  margin-bottom: 0.5rem;
+  margin-left: 0.5em;
 }

@@ -31,6 +31,15 @@ export class DetailComponent implements OnInit {
 
   saveNote():void {
     this.noteService.addNote(this.note);
+    this.edit = !this.edit;
   }
 
+  srcDocument(){
+    if(this.note.document){
+      let file = JSON.parse(this.note.document);
+
+      return URL.createObjectURL(file);
+    }
+    return "";
+  }
 }

@@ -17,9 +17,11 @@ import {FormsModule} from "@angular/forms";
 import { WaitingNotePipe } from './pipes/waiting-note.pipe';
 import { DetailComponent } from './detail/detail.component';
 import { NoteListComponent } from './note-list/note-list.component';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatIconModule} from "@angular/material/icon";
-import {MatListModule} from "@angular/material/list";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatIconModule } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import {MatListModule} from "@angular/material/list";
     FormsModule,
     MatToolbarModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    NgbModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

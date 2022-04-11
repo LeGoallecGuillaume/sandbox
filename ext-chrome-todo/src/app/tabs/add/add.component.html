@@ -10,19 +10,25 @@
   <textarea matInput placeholder="Description de la note" [(ngModel)]="note.body">{{note.body}}</textarea>
 </mat-form-field>
 
+<!--
 <input type="file" class="file-input"
        (change)="onFileSelected($event)" #fileUpload>
 
 <div class="file-upload">
-
-
   <button mat-mini-fab color="primary" class="upload-btn"
           (click)="fileUpload.click()">
     <mat-icon>attach_file</mat-icon>
   </button>
   {{fileName || "No file uploaded yet."}}
 
+  <button mat-icon-button color="secondary" class="upload-btn"
+          (click)="removeFile()">
+    <mat-icon *ngIf="fileName">close</mat-icon>
+  </button>
+
 </div>
+-->
+
 
 <div class="center">
   <!--Reset-->

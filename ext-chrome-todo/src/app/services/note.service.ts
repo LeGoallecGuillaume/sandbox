@@ -1,14 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Note} from '../structures/note';
 import {not} from "rxjs/internal-compatibility";
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoteService {
   public _notes: Map<String, Note>;
-
-  constructor() {
+  constructor(private _snackBar: MatSnackBar) {
     this._notes = new Map<String, Note>();
     // getLocaStorageNotes
     for(let i = 0; i < localStorage.length; i++){
@@ -35,29 +36,34 @@ export class NoteService {
       existNote.body = note.body;
       existNote.document = note.document;
       this._notes.set(existNote.titre, existNote);
-      localStorage.setItem(existNote.titre.toString(), JSON.stringify(existNote))
+      localStorage.setItem(existNote.titre.toString(), JSON.stringify(existNote));
+
+      this._snackBar.open('Note modifiée !', 'Fermer', {
+        duration: 3000
+      });
 
     } else{
       if(!note.createDate){
         note.createDate = new Date();
       }
+
       note.status = "waiting";
-      if (note.document) {
-
-        const fileName = note.document.name;
-
-        const formData = new FormData();
-
-        formData.append("thumbnail", note.document);
-
-        // const upload$ = this.http.post("...", formData);
-
-        // upload$.subscribe();
-      }
       this._notes.set(note.titre, note);
-      localStorage.setItem(note.titre.toString(), JSON.stringify(note))
+      localStorage.setItem(note.titre.toString(), JSON.stringify(note));
 
+      this._snackBar.open('Note crée !', 'Fermer', {
+        duration: 3000
+      });
     }
+
+  }
+  private getPhoto() : File {
+    var base64 = localStorage["file"];
+    var base64Parts = base64.split(",");
+    var fileFormat = base64Parts[0].split(";")[1];
+    var fileContent = base64Parts[1];
+    var file = new File([fileContent], "file name here", {type: fileFormat});
+    return file;
   }
 
   public resetNote(note: Note): Note{
